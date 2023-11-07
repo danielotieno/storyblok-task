@@ -1,4 +1,4 @@
-import loginPage from "../../support/pages/loginPage";
+import loginPage from '../../support/pages/loginPage';
 
 describe('Storyblok App Login', function () {
   beforeEach(function () {
@@ -23,15 +23,4 @@ describe('Storyblok App Login', function () {
       'Mombasa001!',
     );
   });
-
-  // it(
-  //   'Login - Client - Email - Account Exists @test=AH-15933',
-  //   { tags: ['@smoke', '@login'] },
-  //   () => {
-  //     testUtils.loginApplication(
-  //       Cypress.env('default_email'),
-  //       Cypress.env('default_password'),
-  //     );
-  //   },
-  // );
 });
