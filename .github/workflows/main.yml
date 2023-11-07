@@ -1,0 +1,56 @@
+
+name: Storyblok Test Automation
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  cypress:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Smoke tests 💨
+        uses: cypress-io/github-action@v6
+        with:
+          command: npm run ui-smoke-test
+          wait-on: 'https://app.storyblok.com/#/login'
+          env: grepTags=@smoke
+          record: true
+          group: '1 - smoke tests'
+          tag: smoke
+      - name: Uploading artifact
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: cypress-execution-report
+          path: cypress/reports/html
+          retention-days: 7
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # if smoke tests passed, run all the tests
+      - name: All E2E tests 🧪
+        uses: cypress-io/github-action@v6
+        with:
+          install: false
+          record: true
+          group: '2 - all tests'
+      - name: Uploading artifact
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: cypress-execution-report
+          path: cypress/reports/html
+          retention-days: 30
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+
+

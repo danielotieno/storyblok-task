@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "ui-test": "cypress open --e2e --browser chrome",
+    "ui-smoke-test": "npx cypress run --env grepTags=\"@smoke\"",
     "ui-test-allure": "cypress run --browser chrome --spec cypress/e2e/AssetsTest/**.js --env allure=true",
     "allure:clear": "rm -r allure-results/ allure-report cypress/screenshots || true",
     "allure:report": "allure generate allure-results --clean -o allure-report",
