@@ -1,4 +1,3 @@
-
 name: Storyblok Test Automation
 
 on:
@@ -19,9 +18,6 @@ jobs:
           command: npm run ui-smoke-test
           wait-on: 'https://app.storyblok.com/#/login'
           env: grepTags=@smoke
-          record: true
-          group: '1 - smoke tests'
-          tag: smoke
       - name: Uploading artifact
         uses: actions/upload-artifact@v3
         if: always()
@@ -30,7 +26,6 @@ jobs:
           path: cypress/reports/html
           retention-days: 7
         env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # if smoke tests passed, run all the tests
@@ -38,7 +33,6 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           install: false
-          group: '2 - all tests'
       - name: Uploading artifact
         uses: actions/upload-artifact@v3
         if: always()
@@ -47,9 +41,4 @@ jobs:
           path: cypress/reports/html
           retention-days: 30
         env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
-
-
