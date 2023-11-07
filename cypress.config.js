@@ -23,7 +23,7 @@ module.exports = defineConfig({
       allureWriter(on, config);
       return config;
     },
-    baseUrl: 'https://app.storyblok.com/#/login',
+    baseUrl: 'https://app.storyblok.com',
     specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx}',
   },
 });
