@@ -29,12 +29,17 @@ describe('Storyblok App Assets Section', function () {
     });
 
     it('Upload public asset', { tags: '@smoke' }, () => {
-      assetsPage.uploadPublicAsset();
+      assetsPage.uploadAsset('cypress/fixtures/public_assets.webp');
       assetsPage.clickSubmitButton();
     });
 
-    it.only('Upload private asset', { tags: '@smoke' }, () => {
+    it('Upload private asset', { tags: '@smoke' }, () => {
       assetsPage.uploadPrivateAsset();
+      assetsPage.clickSubmitButton();
+    });
+
+    it.only('Upload multiple assets', { tags: '@smoke' }, () => {
+      assetsPage.uploadMultipleAssets();
       assetsPage.clickSubmitButton();
     });
 

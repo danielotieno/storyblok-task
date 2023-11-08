@@ -9,6 +9,7 @@ class AssetsPage {
       assetsMenuLink: '#app-Assets',
       fileUpload: '#file',
       toggleInput: '.sb-toggle',
+      addMoreButton: '.sb-button--tertiary',
     };
   }
 
@@ -24,19 +25,22 @@ class AssetsPage {
     cy.get(selectors.common.submitButton).click();
   }
 
-  uploadPublicAsset() {
+  uploadAsset(asset) {
     cy.get(selectors.common.button).click({ multiple: true });
-    cy.get(this.selectors.fileUpload)
-      .invoke('show')
-      .selectFile('cypress/fixtures/public_assets.webp');
+    cy.get(this.selectors.fileUpload).invoke('show').selectFile(asset);
   }
 
   uploadPrivateAsset() {
-    cy.get(selectors.common.button).click({ multiple: true });
+    this.uploadAsset('cypress/fixtures/private_assets.webp');
+    cy.get(this.selectors.toggleInput).click();
+  }
+
+  uploadMultipleAssets() {
+    this.uploadAsset('cypress/fixtures/multi_one.webp');
+    cy.get(this.selectors.addMoreButton).click({ multiple: true, force: true });
     cy.get(this.selectors.fileUpload)
       .invoke('show')
-      .selectFile('cypress/fixtures/private_assets.webp');
-      cy.get(this.selectors.toggleInput).click();
+      .selectFile('cypress/fixtures/drag_drop.webp', { force: true });
   }
 
   cancelAssetUpload() {
