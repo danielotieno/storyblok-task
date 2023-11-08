@@ -3,6 +3,8 @@ import selectors from '../../utils/selectors';
 class SpacePage {
   selectors = {
     addSpaceButton: '.header__buttons-container > .sb-button--primary',
+    spaceNameField: '#space-name',
+    quickStartName: '.quickstart__space-name',
   };
 
   navigateTo() {
@@ -15,6 +17,12 @@ class SpacePage {
 
   clickAddSpaceButton() {
     cy.get(this.selectors.addSpaceButton).click();
+  }
+
+  createNewSpace() {
+    cy.get(this.selectors.spaceNameField).clear().type('Test Space');
+    cy.get(selectors.common.button).eq(1).click();
+    cy.get(this.selectors.quickStartName).should('have.text', 'Test Space');
   }
 }
 

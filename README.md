@@ -1,3 +1,5 @@
+![example workflow](https://github.com/danielotieno/storyblok-task/actions/workflows/main.yml/badge.svg)
+
 # Introduction
 
 This repo contains tests for the Storyblok task on the Dev/Demo app.
@@ -15,13 +17,44 @@ This repo contains tests for the Storyblok task on the Dev/Demo app.
 
 # Getting Started
 
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
+Below are the ways to get started with the codebase.
 
-1. Installation process
-2. Software dependencies
-3. Latest releases
-4. API references
+## Get The source Code
+Download or clone the repo locally. Use the below comand to clone the repo.
 
-# Build and Test
+```
+SSH
+git clone git@github.com:danielotieno/storyblok-task.git
+```
 
-TODO: Describe and show how to build your code and run the tests.
+```
+HTTPS
+git clone https://github.com/danielotieno/storyblok-task.git
+```
+
+## Install Dependencies
+```
+yarn install
+```
+
+## Run Tests
+
+```
+To run all the tests, use the command below;
+
+yarn ui-test
+```
+
+```
+To run smoke tests, use the command below;
+
+yarn ui-smoke-test
+```
+
+```
+To generate tests report, run the command below;
+
+yarn allure:report
+```
+
+

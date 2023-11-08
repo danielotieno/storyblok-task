@@ -19,5 +19,6 @@ describe('Storyblok App Spaces Page', function () {
       'have.text',
       'Create your new space',
     );
+    spacesPage.createNewSpace();
   });
 });
