@@ -19,8 +19,11 @@ class LoginPage {
     cy.get(selectors.common.button).click();
   }
 
-  login(email, password) {
-    this.typeUserCredentials(email, password);
+  login() {
+    this.typeUserCredentials(
+      'danielotieno.ke+storyblok@gmail.com',
+      'Mombasa001!',
+    );
     this.clickLoginButton();
   }
 }

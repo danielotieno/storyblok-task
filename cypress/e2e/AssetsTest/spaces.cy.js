@@ -5,7 +5,7 @@ import selectors from '../../utils/selectors';
 describe('Storyblok App Spaces Page', function () {
   beforeEach(function () {
     spacesPage.navigateTo();
-    loginPage.login('danielotieno.ke+storyblok@gmail.com', 'Mombasa001!');
+    loginPage.login();
   });
 
   it('Check Spaces Heading', () => {

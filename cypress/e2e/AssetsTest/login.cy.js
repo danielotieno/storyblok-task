@@ -7,7 +7,7 @@ describe('Storyblok App Login Page', function () {
   });
 
   it('Check Login Welcome Text', () => {
-    cy.get('.login__header')
+    cy.get(selectors.common.loginHeader)
       .should('be.visible')
       .should('include.text', 'Welcome back   Sign in to Storyblok');
   });
@@ -23,7 +23,7 @@ describe('Storyblok App Login Page', function () {
   });
 
   it('Login user with valid credentials', { tags: '@smoke' }, () => {
-    loginPage.login('danielotieno.ke+storyblok@gmail.com', 'Mombasa001!' )
+    loginPage.login();
     cy.url().should('include', '/#/me/spaces');
   });
 });
