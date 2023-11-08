@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import loginPage from '../../support/pages/loginPage';
 import spacesPage from '../../support/pages/spacesPage';
 import selectors from '../../utils/selectors';

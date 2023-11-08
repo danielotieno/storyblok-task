@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import assetsPage from '../../support/pages/assetsPage';
 import loginPage from '../../support/pages/loginPage';
 import selectors from '../../utils/selectors';
@@ -27,9 +28,14 @@ describe('Storyblok App Assets Section', function () {
         .should('include.text', 'Assets');
     });
 
-    it.only('Upload public asset', { tags: '@smoke' }, () => {
+    it('Upload public asset', { tags: '@smoke' }, () => {
       assetsPage.uploadPublicAsset();
-      assetsPage.submitButton();
+      assetsPage.clickSubmitButton();
+    });
+
+    it.only('Cancel asset upload', () => {
+      assetsPage.uploadPublicAsset();
+      assetsPage.cancelAssetUpload();
     });
   });
 });

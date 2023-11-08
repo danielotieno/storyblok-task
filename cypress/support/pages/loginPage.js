@@ -1,10 +1,13 @@
-import selectors from "../../utils/selectors";
+/* eslint-disable no-undef */
+import selectors from '../../utils/selectors';
 
 class LoginPage {
-  selectors = {
-    emailInput: '#email',
-    passwordInput: '#password',
-  };
+  constructor() {
+    this.selectors = {
+      emailInput: '#email',
+      passwordInput: '#password',
+    };
+  }
 
   navigateTo() {
     cy.visit('/#/login');
