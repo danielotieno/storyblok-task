@@ -10,17 +10,26 @@ describe('Storyblok App Assets Section', function () {
   });
 
   it('Select Space and navigate to dashboard', () => {
-
     cy.get(selectors.common.headerTitle)
       .should('be.visible')
       .should('include.text', 'Test Space');
     cy.url().should('include', '/dashboard');
   });
 
-  it('Navigate to Assets Page', () => {
-    assetsPage.navigeteTo();
-    cy.get(selectors.common.headerTitle)
-      .should('be.visible')
-      .should('include.text', 'Assets');
+  context('Assets Page', () => {
+    beforeEach(() => {
+      assetsPage.navigeteTo();
+    });
+
+    it('Navigate to Assets Page', () => {
+      cy.get(selectors.common.headerTitle)
+        .should('be.visible')
+        .should('include.text', 'Assets');
+    });
+
+    it.only('Upload public asset', { tags: '@smoke' }, () => {
+      assetsPage.uploadPublicAsset();
+      assetsPage.submitButton();
+    });
   });
 });

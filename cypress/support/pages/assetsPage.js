@@ -1,8 +1,10 @@
+import selectors from '../../utils/selectors';
 
 class AssetsPage {
   selectors = {
     spaceItem: '.base-space-card',
     assetsMenuLink: '#app-Assets',
+    fileUpload: '#file',
   };
 
   clickSpace() {
@@ -13,10 +15,18 @@ class AssetsPage {
     cy.get(this.selectors.assetsMenuLink).click();
   }
 
-  login(email, password) {
-    this.typeUserCredentials(email, password);
-    this.clickLoginButton();
+  submitButton() {
+    cy.get(selectors.common.submitButton).click();
   }
+
+  uploadPublicAsset() {
+    cy.get(selectors.common.button).click({multiple: true});
+    cy.get(this.selectors.fileUpload).invoke('show').selectFile(
+      'cypress/fixtures/public_assets.webp',
+    );
+  }
+
+
 }
 
 export default new AssetsPage();
