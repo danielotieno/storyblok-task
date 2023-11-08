@@ -1,8 +1,9 @@
+import selectors from "../../utils/selectors";
+
 class LoginPage {
   selectors = {
     emailInput: '#email',
     passwordInput: '#password',
-    button: '.sb-button > .sb-button__label',
   };
 
   navigateTo() {
@@ -15,7 +16,12 @@ class LoginPage {
   }
 
   clickLoginButton() {
-    cy.get(this.selectors.button).click();
+    cy.get(selectors.common.button).click();
+  }
+
+  login(email, password) {
+    this.typeUserCredentials(email, password);
+    this.clickLoginButton();
   }
 }
 
