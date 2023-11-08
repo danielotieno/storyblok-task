@@ -33,7 +33,12 @@ describe('Storyblok App Assets Section', function () {
       assetsPage.clickSubmitButton();
     });
 
-    it.only('Cancel asset upload', () => {
+    it.only('Upload private asset', { tags: '@smoke' }, () => {
+      assetsPage.uploadPrivateAsset();
+      assetsPage.clickSubmitButton();
+    });
+
+    it('Cancel asset upload', () => {
       assetsPage.uploadPublicAsset();
       assetsPage.cancelAssetUpload();
     });
