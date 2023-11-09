@@ -8,6 +8,7 @@ class AssetsPage {
       spaceItem: '.base-space-card',
       assetsMenuLink: '#app-Assets',
       fileUpload: '#file',
+      replaceFileUpload: '#replacefile',
       toggleInput: '.sb-toggle',
       addMoreButton: '.sb-button--tertiary',
       assetItem: '.assets-list-item__container',
@@ -15,7 +16,7 @@ class AssetsPage {
       secondaryButton: '.sb-button--secondary',
       deleteIcon: '[aria-label="Delete"]',
       dangerButton: '.sb-button--danger',
-
+      replaceIcon: '[aria-label="Replace"]',
     };
   }
 
@@ -32,7 +33,7 @@ class AssetsPage {
   }
 
   uploadAsset(asset) {
-    cy.get(selectors.common.button).click({ multiple: true });
+    cy.get(selectors.common.button).click({ multiple: true, force: true });
     cy.get(this.selectors.fileUpload).invoke('show').selectFile(asset);
   }
 
@@ -50,23 +51,37 @@ class AssetsPage {
   }
 
   hoverOnAsset() {
-    cy.get(this.selectors.assetItem).realHover();
+    cy.get(this.selectors.assetItem).eq(0).realHover();
   }
 
   selectAssets() {
     this.hoverOnAsset();
-    cy.get(this.selectors.inputCheckbox).click({ force: true});
-    cy.get(this.selectors.secondaryButton).eq(0).click({ force: true});
+    cy.get(this.selectors.inputCheckbox).click({ force: true });
+    cy.get(this.selectors.secondaryButton).eq(0).click({ force: true });
   }
 
   deleteAsset() {
-    this.selectAssets();
-    cy.get(this.selectors.deleteIcon).click({ force: true});
-    cy.get(this.selectors.dangerButton).click({ force: true});
+    this.hoverOnAsset();
+    cy.get(this.selectors.inputCheckbox).click({ force: true });
+    cy.get(this.selectors.deleteIcon).click({ force: true });
+    cy.get(this.selectors.dangerButton).click({ force: true });
+  }
+
+  replaceAsset() {
+    this.uploadAsset('cypress/fixtures/multi_one.webp');
+    this.clickSubmitButton();
+    this.hoverOnAsset();
+    cy.get(this.selectors.inputCheckbox).click({ force: true });
+    cy.get(this.selectors.replaceIcon).click({ force: true });
+    cy.get(this.selectors.replaceFileUpload)
+      .invoke('show')
+      .selectFile('cypress/fixtures/drag_drop.webp', { force: true });
   }
 
   notificationAlert(message) {
-    cy.get(selectors.common.notificationModal).should('be.visible').should('include.text', message);
+    cy.get(selectors.common.notificationModal)
+      .should('be.visible')
+      .should('include.text', message);
   }
 
   cancelAssetUpload() {

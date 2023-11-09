@@ -31,6 +31,7 @@ describe('Storyblok App Assets Section', function () {
     it('Upload public asset', { tags: '@smoke' }, () => {
       assetsPage.uploadAsset('cypress/fixtures/public_assets.webp');
       assetsPage.clickSubmitButton();
+       cy.wait(6000);
       assetsPage.deleteAsset();
       assetsPage.notificationAlert('The asset was successfully deleted');
     });
@@ -38,6 +39,7 @@ describe('Storyblok App Assets Section', function () {
     it('Upload private asset', { tags: '@smoke' }, () => {
       assetsPage.uploadPrivateAsset();
       assetsPage.clickSubmitButton();
+       cy.wait(6000);
       assetsPage.deleteAsset();
       assetsPage.notificationAlert('The asset was successfully deleted');
     });
@@ -45,11 +47,14 @@ describe('Storyblok App Assets Section', function () {
     it('Upload multiple assets', { tags: '@smoke' }, () => {
       assetsPage.uploadMultipleAssets();
       assetsPage.clickSubmitButton();
+       cy.wait(6000);
       assetsPage.deleteAsset();
       assetsPage.notificationAlert('The asset was successfully deleted');
     });
 
-    it.only('Select an asset', () => {
+    it('Replace an asset', { tags: '@smoke' }, () => {
+      assetsPage.replaceAsset();
+      cy.wait(6000);
       assetsPage.deleteAsset();
       assetsPage.notificationAlert('The asset was successfully deleted');
     });
