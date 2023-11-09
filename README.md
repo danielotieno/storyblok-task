@@ -11,7 +11,7 @@ This repo contains tests for the Storyblok task on the Demo webapp.
 - As developers, we need to ensure that the Assets feature works. Your task here is to
   explore the Assets tab and describe the necessary tests to cover the registration of an
   asset and also the Replace option. You can describe it in whatever format you think is the
-  best.
+  best
 - Among the tests you identify, choose the ones you deem most important and automate
   them using Cypress (Use whatever architecture, report plugins, and resources you want).
 
