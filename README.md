@@ -2,7 +2,7 @@
 
 # Introduction
 
-This repo contains tests for the Storyblok task on the Dev/Demo app.
+This repo contains tests for the Storyblok task on the Demo webapp.
 
 - In Assets, the user can register different types of files which will be used in the
   construction of the story.

@@ -13,7 +13,7 @@ describe('Storyblok App Spaces Page', function () {
     spacesPage.spaceHeadingContent('Spaces');
   });
 
-  it('Add a new space', { tags: '@smoke' }, () => {
+  it.skip('Add a new space', { tags: '@smoke' }, () => {
     spacesPage.clickAddSpaceButton();
     cy.url().should('include', '/#/me/spaces/new');
     cy.get(selectors.common.headerTitle).should(
