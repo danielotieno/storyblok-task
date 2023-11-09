@@ -6,6 +6,7 @@ class Selectors {
       loginHeader: '.login__header',
       submitButton: 'button[type="submit"]',
       closeModalButton: '.sb-modal__close-button',
+      notificationModal: '.vue-notification-group',
     };
   }
 }

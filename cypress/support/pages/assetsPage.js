@@ -10,6 +10,12 @@ class AssetsPage {
       fileUpload: '#file',
       toggleInput: '.sb-toggle',
       addMoreButton: '.sb-button--tertiary',
+      assetItem: '.assets-list-item__container',
+      inputCheckbox: 'input[type="checkbox"]',
+      secondaryButton: '.sb-button--secondary',
+      deleteIcon: '[aria-label="Delete"]',
+      dangerButton: '.sb-button--danger',
+
     };
   }
 
@@ -41,6 +47,26 @@ class AssetsPage {
     cy.get(this.selectors.fileUpload)
       .invoke('show')
       .selectFile('cypress/fixtures/drag_drop.webp', { force: true });
+  }
+
+  hoverOnAsset() {
+    cy.get(this.selectors.assetItem).realHover();
+  }
+
+  selectAssets() {
+    this.hoverOnAsset();
+    cy.get(this.selectors.inputCheckbox).click({ force: true});
+    cy.get(this.selectors.secondaryButton).eq(0).click({ force: true});
+  }
+
+  deleteAsset() {
+    this.selectAssets();
+    cy.get(this.selectors.deleteIcon).click({ force: true});
+    cy.get(this.selectors.dangerButton).click({ force: true});
+  }
+
+  notificationAlert(message) {
+    cy.get(selectors.common.notificationModal).should('be.visible').should('include.text', message);
   }
 
   cancelAssetUpload() {

@@ -31,16 +31,27 @@ describe('Storyblok App Assets Section', function () {
     it('Upload public asset', { tags: '@smoke' }, () => {
       assetsPage.uploadAsset('cypress/fixtures/public_assets.webp');
       assetsPage.clickSubmitButton();
+      assetsPage.deleteAsset();
+      assetsPage.notificationAlert('The asset was successfully deleted');
     });
 
     it('Upload private asset', { tags: '@smoke' }, () => {
       assetsPage.uploadPrivateAsset();
       assetsPage.clickSubmitButton();
+      assetsPage.deleteAsset();
+      assetsPage.notificationAlert('The asset was successfully deleted');
     });
 
-    it.only('Upload multiple assets', { tags: '@smoke' }, () => {
+    it('Upload multiple assets', { tags: '@smoke' }, () => {
       assetsPage.uploadMultipleAssets();
       assetsPage.clickSubmitButton();
+      assetsPage.deleteAsset();
+      assetsPage.notificationAlert('The asset was successfully deleted');
+    });
+
+    it.only('Select an asset', () => {
+      assetsPage.deleteAsset();
+      assetsPage.notificationAlert('The asset was successfully deleted');
     });
 
     it('Cancel asset upload', () => {
