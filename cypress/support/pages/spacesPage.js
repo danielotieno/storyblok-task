@@ -1,11 +1,14 @@
+/* eslint-disable no-undef */
 import selectors from '../../utils/selectors';
 
 class SpacePage {
-  selectors = {
-    addSpaceButton: '.header__buttons-container > .sb-button--primary',
-    spaceNameField: '#space-name',
-    quickStartName: '.quickstart__space-name',
-  };
+  constructor() {
+    this.selectors = {
+      addSpaceButton: '.header__buttons-container > .sb-button--primary',
+      spaceNameField: '#space-name',
+      quickStartName: '.quickstart__space-name',
+    };
+  }
 
   navigateTo() {
     cy.visit('/#/me/spaces');
