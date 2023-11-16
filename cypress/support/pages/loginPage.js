@@ -29,6 +29,14 @@ class LoginPage {
     );
     this.clickLoginButton();
   }
+
+  invalidLogin() {
+    this.typeUserCredentials(
+      'danielotieno.ke+storyblok@gmail.com',
+      'Mombasa001!1',
+    );
+    this.clickLoginButton();
+  }
 }
 
 export default new LoginPage();
