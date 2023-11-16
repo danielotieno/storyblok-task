@@ -29,7 +29,7 @@ describe('Storyblok App Login Page', function () {
     cy.url().should('include', '/#/me/spaces');
   });
 
-   it.only(
+   it(
      'Should not be able to logged in user with wrong credentials',
      { tags: '@smoke' },
      () => {

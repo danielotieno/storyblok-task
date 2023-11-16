@@ -1,17 +1,18 @@
 ### Description:
-The purpose of this test case is to ensure that user is not able to login with wrong password
+The purpose of this test case is to ensure that user is not able to login with wrong password or username
 
 ### Preconditions:
 
-- User is logged into the application
+- User is logged out of the application
 
 ### Actions:
 
-- Click My account on the side navbar
-- A pop up will appear
-- Click the Logout icon
+- Enter valid username or email
+- Enter invalid password
+- Click Sign in button
 
 ### Expected Result:
 
-- User is logged out
-- User is redirected to the login page
+- A notification toast will appear
+- The toast will text Wrong username or password
+- The toast will be red light in color
